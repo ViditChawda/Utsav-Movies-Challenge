@@ -1,4 +1,5 @@
 .App {
+  scroll-behavior: smooth;
   text-align: center;
   background-color: #111;
 }
@@ -36,4 +37,8 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+html{
+  scroll-behavior: smooth;
 }

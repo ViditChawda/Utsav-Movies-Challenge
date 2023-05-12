@@ -1,0 +1,40 @@
+.navContainer {
+    color: White;
+ 
+    top: 0;
+   
+
+    .navBar {
+        padding: 20px;
+        display: flex;
+
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgba(71, 70, 70, 0.189);
+     
+
+        // border: 1px solid red;
+        .logo {
+            font-size: 30px;
+            font-family: 'Helvetica Neue', sans-serif;
+        }
+
+        .navOptions {
+            // border: 1px solid red;
+            font-size: 20px;
+            margin-right: 30px;
+            display: flex;
+            justify-content: space-between;
+            width: 30%;
+
+            .options {
+                text-decoration: none;
+                color: white;
+            }
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}

@@ -1,13 +1,36 @@
-
 .mainContainer {
-    transition : transform 450ms;
+    transition: transform 450ms;
     object-fit: contain;
     padding: 20px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
         sans-serif;
 
+    .search {
+        text-align: left ;
+        align-items: center;
+        .searchBar {
+            height: 20px;
+            width: 380px;
+            background-color: rgba(71, 70, 70, 0.189);
+            font-size: 20px;
+            border-radius: 40px;
+            border: 1px solid transparent;
+            padding: 10px;
+        }
+
+        .btn {
+            background: none;
+            color: white;
+            padding: 10px;
+            font-size: 17px;
+            border: 1px solid transparent;
+            height: 40px;
+        }
+    }
+
     .heading {
+        text-align: left;
         padding: 0px 30px;
         color: white;
     }
@@ -26,16 +49,16 @@
 
         .cardContainer {
             // border: 1px solid red;
-            background-color: #595a5b2c;
+            background-color: #5d5d5f4e;
             opacity: 0.8;
-            height: 540px;
+            height: 550px;
             border-radius: 20px;
             width: 550px;
             border: 2px solid transparent;
             margin-right: 30px;
             z-index: 30000;
             padding: 5px;
-            box-shadow: -2px -2px 4px rgba(0, 0, 0, 0.2);
+            
             transition: 0.8s;
 
 
@@ -47,18 +70,22 @@
                 height: 400px;
                 width: 350px;
                 border-radius: 20px;
-                box-shadow: -2px -2px 6px 6px rgba(0, 0, 0, 0.2);
+                // box-shadow: -2px -2px 6px 6px rgba(0, 0, 0, 0.2);
             }
 
             .title {
                 margin: 10px;
                 color: white;
-                font-size: 15px;
+                font-size: 17px;
                 text-align: center;
                 font-family: "Helvetica Neue", sans-serif;
                 font-weight: bold;
             }
-
+            .date{
+                color: white;
+                font-size: 12px;
+                margin: 5px;
+            }
             .overview {
                 font-family: "Open Sans", sans-serif;
                 text-align: center;
