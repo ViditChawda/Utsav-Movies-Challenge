@@ -9,6 +9,18 @@ export default function MovieList() {
     const [topRatedMovies, setTopRatedMovies] = useState([]);
     const [popularMovies, setPopularMovies] = useState([]);
     const [upcomingMovies, setUpcomingMovies] = useState([]);
+    const [results, setResults] = useState([]);
+    const [query, setQuery] = useState('');
+
+    const handleSearch = (event) => {
+        
+
+        const topRatedfilteredArray = topRatedMovies.filter((movie) => {
+            return movie.title.toLowerCase().includes(event.target.value.toLowerCase())
+        })
+        setResults(topRatedfilteredArray);
+        setQuery(event.target.value);
+    }
 
     useEffect(() => {
         const fetchMovies = async () => {
@@ -35,43 +47,64 @@ export default function MovieList() {
         <div className={styles.mainContainer}>
             <form className={styles.search} action="/search" method="get">
                 <button className={styles.btn} type="submit"><BsSearch /></button>
-                <input className={styles.searchBar} type="text" name="q" placeholder="Search Movies...." />
+                <input onChange={handleSearch} className={styles.searchBar} type="text" name="q" placeholder="Search Movies...." />
 
             </form>
-            <h1 className={styles.heading} id="toprated">Top Rated Movies</h1>
-            <div className={styles.movieContainer} >
-                {topRatedMovies.map((movie) => (
-                    <div key={movie.id} className={styles.cardContainer}>
-                        <div className={styles.title}>{movie.title}</div>
-                        <img className={styles.image} src={`${IMAGE_BASE_URL}${movie.poster_path}`} alt={movie.title} width={500} height={750} />
-                        <div className={styles.overview}>{movie.overview}</div>
+            {query === '' ?
+                <>
+                    <h1 className={styles.heading} id="toprated">Top Rated Movies</h1>
+                    <div className={styles.movieContainer} >
+                        {topRatedMovies.map((movie) => (
+                            <div key={movie.id} className={styles.cardContainer}>
+                                <div className={styles.title}>{movie.title}</div>
+                                <img className={styles.image} src={`${IMAGE_BASE_URL}${movie.poster_path}`} alt={movie.title} width={500} height={750} />
+                                <div className={styles.overview}>{movie.overview}</div>
+                            </div>
+                        ))}
                     </div>
-                ))}
-            </div>
 
-            <h1 className={styles.heading} id="popular">Popular Movies</h1>
-            <div className={styles.movieContainer} >
-                {popularMovies.map((movie) => (
-                    <div className={styles.cardContainer} key={movie.id}>
-                        <div className={styles.title}>{movie.title}</div>
-                        <img className={styles.image} src={`${IMAGE_BASE_URL}${movie.poster_path}`} alt={movie.title} width={500} height={750} />
-                        <div className={styles.overview}>{movie.overview}</div>
+                    <h1 className={styles.heading} id="popular">Popular Movies</h1>
+                    <div className={styles.movieContainer} >
+                        {popularMovies.map((movie) => (
+                            <div className={styles.cardContainer} key={movie.id}>
+                                <div className={styles.title}>{movie.title}</div>
+                                <img className={styles.image} src={`${IMAGE_BASE_URL}${movie.poster_path}`} alt={movie.title} width={500} height={750} />
+                                <div className={styles.overview}>{movie.overview}</div>
+                            </div>
+                        ))}
                     </div>
-                ))}
-            </div>
 
-            <h1 className={styles.heading} id="upcoming">Upcoming Movies</h1>
-            <div className={styles.movieContainer} >
-                {upcomingMovies.map((movie) => (
-                    <div className={styles.cardContainer} key={movie.id}>
-                        <div className={styles.title}>{movie.title}</div>
-                        <img className={styles.image} src={`${IMAGE_BASE_URL}${movie.poster_path}`} alt={movie.title} width={500} height={750} />
-                        <div className={styles.date}>Release Date : {movie.release_date}</div>
-                        <div className={styles.overview}>{movie.overview}</div>
+                    <h1 className={styles.heading} id="upcoming">Upcoming Movies</h1>
+                    <div className={styles.movieContainer} >
+                        {upcomingMovies.map((movie) => (
+                            <div className={styles.cardContainer} key={movie.id}>
+                                <div className={styles.title}>{movie.title}</div>
+                                <img className={styles.image} src={`${IMAGE_BASE_URL}${movie.poster_path}`} alt={movie.title} width={500} height={750} />
+                                <div className={styles.date}>Release Date : {movie.release_date}</div>
+                                <div className={styles.overview}>{movie.overview}</div>
 
+                            </div>
+                        ))}
                     </div>
-                ))}
-            </div>
+
+                </> :
+
+                <div className={styles.mainContainer}>
+                    <div className={styles.movieContainer}>
+                        {results.map((movie) => (
+                            <div className={styles.cardContainer} key={movie.id}>
+                                <div className={styles.title}>{movie.title}</div>
+                                <img className={styles.image} src={`${IMAGE_BASE_URL}${movie.poster_path}`} alt={movie.title} width={500} height={750} />
+                                <div className={styles.date}>Release Date : {movie.release_date}</div>
+                                <div className={styles.overview}>{movie.overview}</div>
+                            </div>
+                        ))}
+                    </div>
+
+                </div>
+
+            }
+
         </div>
     );
 }
