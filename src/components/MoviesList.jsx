@@ -13,9 +13,8 @@ export default function MovieList() {
     const [query, setQuery] = useState('');
 
     const handleSearch = (event) => {
-        
-
-        const topRatedfilteredArray = topRatedMovies.filter((movie) => {
+        const allMovies = [...topRatedMovies, ...popularMovies, ...upcomingMovies]
+        const topRatedfilteredArray = allMovies.filter((movie) => {
             return movie.title.toLowerCase().includes(event.target.value.toLowerCase())
         })
         setResults(topRatedfilteredArray);
